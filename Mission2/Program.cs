@@ -14,20 +14,34 @@ namespace Mission2
             Random r = new Random();
 
             //initialize array for roll totals for each number
-            int[] rollTotals = new int[6];
+            int[] rollTotals = new int[12];
 
-            //roll die
+            //roll 2 dice
             for (int i = 0; i < 100; i++)
             {
-                int roll = r.Next(6);
+                int rolldie1 = r.Next(6);
+                int rolldie2 = r.Next(6);
 
-                rollTotals[roll]++;
+                int rollSum = rolldie1 + rolldie2;
+
+                rollTotals[rollSum]++;
             }
        
             //print all roll totals
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 11; i++)
             {
-                Console.WriteLine(rollTotals[i]);
+                //Console.WriteLine((i + 2) + ": " + rollTotals[i]);
+                int percent = ((rollTotals[i] / 100) * 100);
+
+                //add one asterisk for percent of total rolls each roll total accounts for 
+                string asterisks = "";
+                for (int i2 = 0; i2 < percent; i2++)
+                {
+                    asterisks += "*";
+                }
+
+                Console.WriteLine((i + 2) + ": " + rollTotals[i] + " " + asterisks);
+
             }
               
         }
