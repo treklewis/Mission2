@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Trek Lewis
+//This is a dice rolling simulator
 namespace Mission2
 {
     class Program
@@ -14,10 +15,15 @@ namespace Mission2
             Random r = new Random();
 
             //initialize array for roll totals for each number
-            int[] rollTotals = new int[12];
+            float[] rollTotals = new float[12];
 
+            //get number of rolls from user and convert to integer
+            Console.WriteLine("Welcome to the dice rolling simulator!\n\nEnter the number of rolls you'd like to simulate (ex. 24): ");
+            int inputNumber = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("SIMULATION RESULTS\nEach '*' represents 1% of the total number of rolls.\nTotal number of rolls = " + inputNumber);
             //roll 2 dice
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < inputNumber; i++)
             {
                 int rolldie1 = r.Next(6);
                 int rolldie2 = r.Next(6);
@@ -30,8 +36,8 @@ namespace Mission2
             //print all roll totals
             for (int i = 0; i < 11; i++)
             {
-                //Console.WriteLine((i + 2) + ": " + rollTotals[i]);
-                int percent = ((rollTotals[i] / 100) * 100);
+                //find roll total percentage
+                float percent = (rollTotals[i] / inputNumber) * 100;
 
                 //add one asterisk for percent of total rolls each roll total accounts for 
                 string asterisks = "";
@@ -40,6 +46,7 @@ namespace Mission2
                     asterisks += "*";
                 }
 
+                //output total rolls and histogram
                 Console.WriteLine((i + 2) + ": " + rollTotals[i] + " " + asterisks);
 
             }
